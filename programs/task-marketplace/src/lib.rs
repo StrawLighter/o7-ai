@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("ASkN7wgJnAzsNqBC7GhYXTYehNg9Tp2N71hgPhtJmASv");
+declare_id!("5nnAtvyXk388f3SwQXihxiGxfyPQzy9U3dzPohvkH9fY");
 
 #[program]
 pub mod task_marketplace {

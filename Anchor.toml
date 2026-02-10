@@ -6,10 +6,16 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-brain_token = "3JJ5NNG5trMYsDoMXoAgvX3XFoFWnDagW16QyXRXdt8Z"
-city_registry = "5BQnx2X6gVmJ7WhQJ6vKCHHfdjkabR4oshVfQXukCCRg"
-task_marketplace = "ASkN7wgJnAzsNqBC7GhYXTYehNg9Tp2N71hgPhtJmASv"
-staking_vault = "7oW2nM631DNoLDLhuV4os642xzZiiPDUJXb4XnXxzwJ1"
+brain_token = "27q16KwXGDooHCCUKvJGrfNXubJh1zFnwXS7XsCXNpVf"
+city_registry = "Cb4F2nafRNbtWKPuWwfjMofq5hZQ6PKttpWLCokCGNtL"
+task_marketplace = "5nnAtvyXk388f3SwQXihxiGxfyPQzy9U3dzPohvkH9fY"
+staking_vault = "CdTaBicv2ppsi8y9YxACvb73qsT2r3A12c26tDTH2unS"
+
+[programs.devnet]
+brain_token = "27q16KwXGDooHCCUKvJGrfNXubJh1zFnwXS7XsCXNpVf"
+city_registry = "Cb4F2nafRNbtWKPuWwfjMofq5hZQ6PKttpWLCokCGNtL"
+task_marketplace = "5nnAtvyXk388f3SwQXihxiGxfyPQzy9U3dzPohvkH9fY"
+staking_vault = "CdTaBicv2ppsi8y9YxACvb73qsT2r3A12c26tDTH2unS"
 
 [registry]
 url = "https://api.apr.dev"

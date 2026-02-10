@@ -1,0 +1,308 @@
+{
+  "address": "5nnAtvyXk388f3SwQXihxiGxfyPQzy9U3dzPohvkH9fY",
+  "metadata": {
+    "name": "task_marketplace",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Task marketplace for agent work assignments"
+  },
+  "instructions": [
+    {
+      "name": "assign_task",
+      "discriminator": [
+        158,
+        142,
+        217,
+        16,
+        175,
+        209,
+        92,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "creator",
+          "signer": true,
+          "relations": [
+            "task"
+          ]
+        },
+        {
+          "name": "task",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "agent",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "create_task",
+      "discriminator": [
+        194,
+        80,
+        6,
+        180,
+        232,
+        127,
+        48,
+        171
+      ],
+      "accounts": [
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "task",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  97,
+                  115,
+                  107
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "task_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "task_id",
+          "type": "u64"
+        },
+        {
+          "name": "task_type",
+          "type": {
+            "defined": {
+              "name": "TaskType"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "reward_brain",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "submit_result",
+      "discriminator": [
+        240,
+        42,
+        89,
+        180,
+        10,
+        239,
+        9,
+        214
+      ],
+      "accounts": [
+        {
+          "name": "agent",
+          "signer": true
+        },
+        {
+          "name": "task",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "result_uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "verify_task",
+      "discriminator": [
+        175,
+        152,
+        172,
+        204,
+        64,
+        126,
+        201,
+        206
+      ],
+      "accounts": [
+        {
+          "name": "creator",
+          "signer": true,
+          "relations": [
+            "task"
+          ]
+        },
+        {
+          "name": "task",
+          "writable": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Task",
+      "discriminator": [
+        79,
+        34,
+        229,
+        55,
+        88,
+        90,
+        55,
+        84
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "DescriptionTooLong",
+      "msg": "Description exceeds 256 characters"
+    },
+    {
+      "code": 6001,
+      "name": "UriTooLong",
+      "msg": "Result URI exceeds 256 characters"
+    },
+    {
+      "code": 6002,
+      "name": "NotOpen",
+      "msg": "Task is not open"
+    },
+    {
+      "code": 6003,
+      "name": "NotInProgress",
+      "msg": "Task is not in progress"
+    },
+    {
+      "code": 6004,
+      "name": "NotCompleted",
+      "msg": "Task is not completed"
+    },
+    {
+      "code": 6005,
+      "name": "NotAssignedAgent",
+      "msg": "Signer is not the assigned agent"
+    },
+    {
+      "code": 6006,
+      "name": "NotCreator",
+      "msg": "Signer is not the task creator"
+    }
+  ],
+  "types": [
+    {
+      "name": "Task",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "task_type",
+            "type": {
+              "defined": {
+                "name": "TaskType"
+              }
+            }
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "reward_brain",
+            "type": "u64"
+          },
+          {
+            "name": "assigned_agent",
+            "type": "pubkey"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "TaskStatus"
+              }
+            }
+          },
+          {
+            "name": "result_uri",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TaskStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Open"
+          },
+          {
+            "name": "InProgress"
+          },
+          {
+            "name": "Completed"
+          },
+          {
+            "name": "Verified"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TaskType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Script"
+          },
+          {
+            "name": "Voiceover"
+          },
+          {
+            "name": "Copy"
+          },
+          {
+            "name": "Ugc"
+          }
+        ]
+      }
+    }
+  ]
+}

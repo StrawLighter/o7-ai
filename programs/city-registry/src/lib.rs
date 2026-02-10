@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("5BQnx2X6gVmJ7WhQJ6vKCHHfdjkabR4oshVfQXukCCRg");
+declare_id!("Cb4F2nafRNbtWKPuWwfjMofq5hZQ6PKttpWLCokCGNtL");
 
 #[program]
 pub mod city_registry {

@@ -1,0 +1,273 @@
+{
+  "address": "27q16KwXGDooHCCUKvJGrfNXubJh1zFnwXS7XsCXNpVf",
+  "metadata": {
+    "name": "brain_token",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "BRAIN SPL token — mint on task completion, burn on API calls"
+  },
+  "instructions": [
+    {
+      "name": "burn_on_api_call",
+      "discriminator": [
+        151,
+        138,
+        27,
+        71,
+        42,
+        165,
+        157,
+        149
+      ],
+      "accounts": [
+        {
+          "name": "burner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "burner_ata",
+          "writable": true
+        },
+        {
+          "name": "brain_supply",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  114,
+                  97,
+                  105,
+                  110,
+                  45,
+                  115,
+                  117,
+                  112,
+                  112,
+                  108,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize_brain",
+      "discriminator": [
+        30,
+        59,
+        89,
+        87,
+        91,
+        27,
+        199,
+        216
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "brain_supply",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  114,
+                  97,
+                  105,
+                  110,
+                  45,
+                  115,
+                  117,
+                  112,
+                  112,
+                  108,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "decimals",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "mint_on_task_completion",
+      "discriminator": [
+        66,
+        250,
+        233,
+        84,
+        39,
+        92,
+        11,
+        41
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "recipient_ata",
+          "writable": true
+        },
+        {
+          "name": "mint_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  114,
+                  97,
+                  105,
+                  110,
+                  45,
+                  109,
+                  105,
+                  110,
+                  116,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "brain_supply",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  114,
+                  97,
+                  105,
+                  110,
+                  45,
+                  115,
+                  117,
+                  112,
+                  112,
+                  108,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BrainSupply",
+      "discriminator": [
+        114,
+        97,
+        84,
+        48,
+        79,
+        42,
+        115,
+        231
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "BrainSupply",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_minted",
+            "type": "u64"
+          },
+          {
+            "name": "total_burned",
+            "type": "u64"
+          },
+          {
+            "name": "decimals",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

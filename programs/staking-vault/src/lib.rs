@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_lang::system_program;
 
-declare_id!("7oW2nM631DNoLDLhuV4os642xzZiiPDUJXb4XnXxzwJ1");
+declare_id!("CdTaBicv2ppsi8y9YxACvb73qsT2r3A12c26tDTH2unS");
 
 #[program]
 pub mod staking_vault {

@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Burn, Mint, MintTo, Token, TokenAccount};
 
-declare_id!("3JJ5NNG5trMYsDoMXoAgvX3XFoFWnDagW16QyXRXdt8Z");
+declare_id!("27q16KwXGDooHCCUKvJGrfNXubJh1zFnwXS7XsCXNpVf");
 
 #[program]
 pub mod brain_token {
